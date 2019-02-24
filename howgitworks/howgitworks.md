@@ -1,4 +1,7 @@
 ## How Git Works 
+- [Module 1: Git Is an Onion](#Git Is an Onion)
+- [Module 2: What Branches Really Are](#Module 2: What Branches Really Are)
+
 ### Git Is an Onion
 * Distibuted Revision Control System
 * Revision Control System
@@ -56,3 +59,24 @@ by requesting cat file - you can see the SHA1 of your directory and it's tree
 * git doesn't create new tree for unchanged objects, git stores a new blob for changed file. 
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img5.PNG)
+
+
+### Annotaded Tags
+* git tag -a mytag -m "I love cheesecake" - tak is an object 
+* git tag #output mytag 
+* git cat-file -p mytag - you will get output of object with SHA1 and type of tag - commit 
+
+Git Object
+* Blobs - artibrate content 
+* Trees - directories
+* Commits 
+* Tags 
+
+### What Git really Is
+* It looks like a file directories. 
+  * Blob - Files 
+  * Trees - Directories
+  * Links - Links
+  * Commits - Versioning
+  
+## Module 2: What Branches Really Are
