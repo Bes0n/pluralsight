@@ -1,8 +1,5 @@
-## How Git Works 
-- [Module 1: Git Is an Onion](# git-is-an-onion)
-- [What Branches Really Are](# what-branches-really-are)
-
-## Git Is an Onion
+# How Git Works 
+## Module 1: Git Is an Onion
 * Distibuted Revision Control System
 * Revision Control System
 * Stupid Content Tracker
@@ -79,4 +76,16 @@ Git Object
   * Links - Links
   * Commits - Versioning
   
-## What Branches Really Are
+## Module 2: What Branches Really Are
+* git branch - show you your current branch
+  * in git directory it located in - ref > heads > master 
+  * master branch file contains SHA file. 
+  * a branch is just a reference to a commit 
+  * branch does not have any special creation. It's only reference. 
+  * git branch branchname - adding new branch. 
+  * after adding new branch we can see it in refs directory
+  
+* just a reference to the same commit 
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img6.PNG)
+
+### The Mechanics of the Current Branch 
