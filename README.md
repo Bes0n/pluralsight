@@ -1,0 +1,2 @@
+# pluralsight
+Notes from courses. 
