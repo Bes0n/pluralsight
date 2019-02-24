@@ -1,8 +1,8 @@
 ## How Git Works 
-- [Module 1: Git Is an Onion](## Module 1: Git Is an Onion)
-- [Module 2: What Branches Really Are](## Module 2: What Branches Really Are)
+- [Module 1: Git Is an Onion](# git-is-an-onion)
+- [What Branches Really Are](# what-branches-really-are)
 
-## Module 1: Git Is an Onion
+## Git Is an Onion
 * Distibuted Revision Control System
 * Revision Control System
 * Stupid Content Tracker
@@ -79,4 +79,4 @@ Git Object
   * Links - Links
   * Commits - Versioning
   
-## Module 2: What Branches Really Are
+## What Branches Really Are
