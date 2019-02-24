@@ -50,3 +50,9 @@ you can see a *tree* on commit blob, this is also an object with first 2 digits 
 by requesting cat file - you can see the SHA1 of your directory and it's tree 
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img4.PNG)
+
+### Versioning Made Easy 
+* each commint has it's own parent. 
+* git doesn't create new tree for unchanged objects, git stores a new blob for changed file. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img5.PNG)
