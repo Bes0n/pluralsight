@@ -124,4 +124,10 @@ You have to decide what changes keep and what to remove. Then save file
 From git log you can find details of commit and merge of Lisa branch. You can see that there are two parents after merge. 
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img11.png)
+
 *Git created a new commit with two parents to represent the merge, and moved master to point at the new commit. That's how merging works*
+
+### Time Traver for Developers 
+* Reference between commits are used to track history 
+* All other references are used to track content 
+* Focus on content history. 
