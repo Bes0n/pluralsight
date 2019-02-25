@@ -224,3 +224,59 @@ Let's imagine we uploaded our git repository into the cloud. We want to install 
 * Let's imagine that we cloned our repo and have new objects in local repo 
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img17.png)
+
+* after making the change in our local repository, we have to call these commands
+  * ``` git add ```
+  * ``` git commit -m "update note"```
+  * ``` git push ```
+  * ``` git show-ref master ``` - we can see that origin state has been updated and referenced to master branch 
+  
+  
+### The Chore of Pulling
+* what if we also have commit on our remote branch? There are two options:
+  * we can force the push (it's not recommended) by ``` git push -f ``` command 
+  * let's do it properly. We need to fix conflict on our machine first 
+    * ``` git fetch ``` - we get the new objects from the remote, and we also update the current position of the remote branches as usual. 
+	* now we can merge our local changes from remote history 
+	
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img18.png)
+
+* This is what you do
+  * fetch 
+  * merge 
+  * push
+  
+There is one sigle command for that. Combine them together - ``` git pull ```. A fetch followed by merge. 
+
+### Rebase Revisited
+Let's talk about rebase. 
+We rolled the change from master into lisa 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img19.png)
+
+After rebase - commit moves to the master and garbage our previous branch 
+Commit with exclamation is a different commit and not the same with yellow one. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img20.png)
+
+We again have a conflict and we can fix it by force-push and after push - everything looks good. But let's imagine we have another developer which still has old commits without exclamation commit. It will be difficult to understand what happened and what causes an error. 
+
+* Never rebase shared commits. It's okay to rebase commit which you didn't shared 
+
+### Getting Social
+* there is a good option on GitHub - Fork. We can clone someone's project to our cloud 
+* Fork is a kind of clone but clone of GitHub Cloud 
+* We have now clone on our github account and can clone in local repository
+  * when we do it, git points to our remote repo called *origin*
+  * github does know that these 2 projects are connected. So if we want to track changes to the original project then we need to add another remote pointing at original project. We have to do it ourselves. This one called *upstream*
+  * we can commit changes to our remote repo (origin) or if there is a changes on original repo *upstream* we can pull them to our local project solve any conflicts and then push them to *origin*
+  * but we still couldn't push our commit to upstream, so github provides us an alternative. We can send a message to maintainers of upstream and ask to pull our changes from origin 
+  * It's called *pull request* 
+  
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img21.png) 
+
+### The whole Onion 
+   
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img22.png) 
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img23.png) 
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img24.png) 
