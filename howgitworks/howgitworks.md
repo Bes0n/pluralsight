@@ -280,3 +280,4 @@ We again have a conflict and we can fix it by force-push and after push - everyt
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img22.png) 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img23.png) 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img24.png) 
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img25.png) 
