@@ -93,7 +93,7 @@ Git Object
   * ref: refs/heads/master 
 * HEAD is just a reference to a branch 
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img7.PNG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img7.png)
 
 * for switching from one branch to another use command *git checkout branchname*
 * when you run this command 2 things happen:
@@ -101,13 +101,13 @@ Git Object
   * content of our tree also changed 
 In other words *checkout* means - move head and update the working area. 
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img8.PNG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img8.png)
 
 * after checkout to Lisa branch and adding new content to apple pie, we commit the changes. 
   * git adds new commit to the database 
   * head moved also
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img9.PNG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img9.png)
 
 ### Let's Merge 
 We move into the master branch. Let's consider that we like Lisa's recipe more. 
@@ -115,7 +115,7 @@ We move into the master branch. Let's consider that we like Lisa's recipe more.
 * git status - to check what conflicts we have. 
 * open conflicting file manually. 
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img10.PNG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img10.png)
 
 You have to decide what changes keep and what to remove. Then save file 
 * git add - recipes.txt
@@ -123,5 +123,5 @@ You have to decide what changes keep and what to remove. Then save file
 
 From git log you can find details of commit and merge of Lisa branch. You can see that there are two parents after merge. 
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img11.PNG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img11.png)
 *Git created a new commit with two parents to represent the merge, and moved master to point at the new commit. That's how merging works*
