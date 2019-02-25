@@ -89,3 +89,39 @@ Git Object
 ![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img6.PNG)
 
 ### The Mechanics of the Current Branch 
+* you can see which branch is your current branch from HEAD file also. 
+  * ref: refs/heads/master 
+* HEAD is just a reference to a branch 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img7.PNG)
+
+* for switching from one branch to another use command *git checkout branchname*
+* when you run this command 2 things happen:
+  * HEAD points to branch you checked
+  * content of our tree also changed 
+In other words *checkout* means - move head and update the working area. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img8.PNG)
+
+* after checkout to Lisa branch and adding new content to apple pie, we commit the changes. 
+  * git adds new commit to the database 
+  * head moved also
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img9.PNG)
+
+### Let's Merge 
+We move into the master branch. Let's consider that we like Lisa's recipe more. 
+* git merge lisa - merging with lisa branch. (but we will get error, we have conflicts with files)
+* git status - to check what conflicts we have. 
+* open conflicting file manually. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img10.PNG)
+
+You have to decide what changes keep and what to remove. Then save file 
+* git add - recipes.txt
+* git commit 
+
+From git log you can find details of commit and merge of Lisa branch. You can see that there are two parents after merge. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/howgitworks/images/img11.PNG)
+*Git created a new commit with two parents to represent the merge, and moved master to point at the new commit. That's how merging works*
