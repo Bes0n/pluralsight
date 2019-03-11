@@ -14,3 +14,22 @@ Course agenda:
 
 ## Installing Docker 
 ### Module Intro
+We will look for:
+* Desktop installs 
+* Server installs 
+* Cloud installs 
+  * Docker Azure
+  * Docker AWS
+  
+### Docker for Windows
+Pre-reqs:
+* Window 10 
+* 64-bit
+* Clean(ish) install 
+
+Use cases:
+* Test
+* Dev
+ 
+Docker is a running Linux virtual Machine on Hyper-V called MobiLinux
+
