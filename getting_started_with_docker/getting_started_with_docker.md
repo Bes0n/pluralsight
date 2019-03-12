@@ -73,3 +73,68 @@ After installation if you're planning to use Docker as a non root user. you shou
 ``` sudo usermod -aG docker your-user ```
 
 ## Working with Containers
+### What Is a Container?
+
+So, hypervisor virtualization virtualizes physical server resources and builds virtual machines. Container engines like Docker, they're more like operating system virtualization, they create virtual operating systems, assign one to each container, inside of which we run applications. And they're way more lightweight than VMs. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img5.JPG)
+
+### The 'docker run' Command
+First useful commands:
+``` docker version ```
+``` docker info ``` - you can see all information about docker, containers, images and so on 
+``` docker run hello-world ``` - looking for image, couldn't find it and pull image, download,install and create a container
+
+``` docker ps ``` - get list of running containers 
+``` docker images ``` - get list of images 
+
+### Theory of Pulling and Running Containers
+Logic is simple:
+* Client ask for daemon to run *hello world* image. 
+* Daemon replies that images not found and check on docker hub is this image exists
+* Daemon pull an image and run a container with that image, execute command and then stops the container, with leaving downloaded image. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img6.JPG)
+
+### Working with Images
+Images ~ Stopped containers
+Containers ~ Running Images 
+
+``` docker pull ``` - pull an image without running container
+``` docker pull ubuntu:14.04```  - pull image with defined version 
+``` docker rmi ubuntu:14.04 ``` - remove your image with tag 
+
+### Container Lifecycle
+You can start stop container - without loosing your data. 
+Container is like a VMs - start, stop, restart. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img7.JPG)
+
+Let's execute following command: 
+``` docker run -d --name web -p 80:8080 nigelpoulton/pluralsight-docker-ci ``` - where *-d* means detached mode, don't interfere with your terminal. *--name* name of the container, *-p* is a port 
+
+Port 80 is local and port 8080 is container port. Like a redirection to container 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img8.JPG)
+
+``` docker run -it --name temp ubuntu:latest /bin/bash ``` - run container in interactive mode with image ubuntu and execute bash shell 
+``` Ctrl + P + Q ``` - exit from container without killing it 
+
+``` docker stop name or container id ``` - stop running container 
+``` docker stop $(docker ps -aq) ``` - stop all containers listed by *docker ps -a* and be quiet - *-q* 
+
+### Lesson Recap
+
+* ``` docker run <image> ``` 
+* ``` docker run -d/-it <image> ``` - detached or interactive 
+
+* ``` docker pull ```
+* ``` docker images ```
+* ``` docker rmi ```
+
+* ``` docker ps ```
+* ``` docker stop ```
+* ``` docker rm ```
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img9.JPG)
+
