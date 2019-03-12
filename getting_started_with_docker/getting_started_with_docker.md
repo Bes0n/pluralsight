@@ -81,12 +81,12 @@ So, hypervisor virtualization virtualizes physical server resources and builds v
 
 ### The 'docker run' Command
 First useful commands:
-``` docker version ```
-``` docker info ``` - you can see all information about docker, containers, images and so on 
-``` docker run hello-world ``` - looking for image, couldn't find it and pull image, download,install and create a container
+* ``` docker version ```
+* ``` docker info ``` - you can see all information about docker, containers, images and so on 
+* ``` docker run hello-world ``` - looking for image, couldn't find it and pull image, download,install and create a container
 
-``` docker ps ``` - get list of running containers 
-``` docker images ``` - get list of images 
+* ``` docker ps ``` - get list of running containers 
+* ``` docker images ``` - get list of images 
 
 ### Theory of Pulling and Running Containers
 Logic is simple:
@@ -100,9 +100,9 @@ Logic is simple:
 Images ~ Stopped containers
 Containers ~ Running Images 
 
-``` docker pull ``` - pull an image without running container
-``` docker pull ubuntu:14.04```  - pull image with defined version 
-``` docker rmi ubuntu:14.04 ``` - remove your image with tag 
+* ``` docker pull ``` - pull an image without running container
+* ``` docker pull ubuntu:14.04```  - pull image with defined version 
+* ``` docker rmi ubuntu:14.04 ``` - remove your image with tag 
 
 ### Container Lifecycle
 You can start stop container - without loosing your data. 
@@ -111,17 +111,18 @@ Container is like a VMs - start, stop, restart.
 ![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img7.JPG)
 
 Let's execute following command: 
-``` docker run -d --name web -p 80:8080 nigelpoulton/pluralsight-docker-ci ``` - where *-d* means detached mode, don't interfere with your terminal. *--name* name of the container, *-p* is a port 
+* ``` docker run -d --name web -p 80:8080 nigelpoulton/pluralsight-docker-ci``` - where *-d* means detached mode, don't interfere with your terminal. *--name* name of the container, *-p* is a port 
 
-Port 80 is local and port 8080 is container port. Like a redirection to container 
+* Port 80 is local and port 8080 is container port. Like a redirection to container 
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img8.JPG)
 
-``` docker run -it --name temp ubuntu:latest /bin/bash ``` - run container in interactive mode with image ubuntu and execute bash shell 
-``` Ctrl + P + Q ``` - exit from container without killing it 
+* ``` docker run -it --name temp ubuntu:latest /bin/bash ``` - run container in interactive mode with image ubuntu and execute bash shell 
+* ``` Ctrl + P + Q ``` - exit from container without killing it 
 
-``` docker stop name or container id ``` - stop running container 
-``` docker stop $(docker ps -aq) ``` - stop all containers listed by *docker ps -a* and be quiet - *-q* 
+* ``` docker stop name or container id ``` - stop running container 
+
+* ``` docker stop $(docker ps -aq) ``` - stop all containers listed by *docker ps -a* and be quiet - *-q* 
 
 ### Lesson Recap
 
