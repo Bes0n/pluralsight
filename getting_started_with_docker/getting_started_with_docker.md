@@ -3,6 +3,8 @@
 - [INTRODUCTION](#course-introduction)
 - [INSTALLING DOCKER](#installing-docker)
 - [WORKING WITH CONTAINERS](#working-with-containers)
+- [SWARM MODE AND MICROSERVICES](#swarm-mode-and-microservices)
+
 
 ## Course Introduction
 ### Introduction
@@ -139,3 +141,78 @@ Let's execute following command:
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img9.JPG)
 
+## Swarm Mode and Microservices
+### Module Intro
+Plan: 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img10.JPG)
+
+### Swarm Mode Theory
+Docker clustering is true native clustering - called SWARM 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img11.JPG)
+
+Below is an example of running service with 5 replicas 
+``` $ docker service create --name web-fe --replicas 5 ```
+
+### Configuring Swarm Mode
+* ``` docker swarm init --advertise-addr 172.31.12.161:2377 --listen-addr 172.31.12.161:2377``` - enable docker swarm mode 
+* Ports:
+  * Engine port: 2375
+  * Secure Engine port: 2376 
+  * Swarm port: 2377 
+  
+To join node into the swarm you just need to enter ``` docker swarm join-token manager ``` or ``` docker swarm join-token worker ```
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img12.JPG)
+
+Manager nodes doing 2 jobs: as a manager node and worker node. 
+
+### Services
+* For register service with swarm 
+``` docker service create --name psight1  -p 8080 --replicas 5 nigelpoulton/pluralsight-docker-ci ```
+* For checking service status:
+  * ``` docker service ps psgiht1 ``` 
+  * ``` docker service inspect psight1 ```
+  
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img13.JPG)  
+
+### Scaling Services
+If some node falls down, docker scale service trying to compensate failed node with working. 
+
+``` docker service scale >> docker service update --replicas ``` 
+
+* you can change replicas scale by entering command:
+``` docker service update --replicas 10 psight1 ```
+
+### Rolling Updates
+* let's create new network:
+``` docker network create -d overlay ps-net ``` - network name ps-net 
+* register new service:
+docker service create --name psight2 --network ps-net -p 80:80 --replicas 12 nigepoulton/tu-demo:v1
+
+* to inspect your service:
+``` docker service inspect --pretty psight2 ``` 
+
+* for update service, we have to run following command:
+``` docker service update --image nigelpoulton/tu-demo:v2 --update-parallelism 2 \ --update-delay 10s psight2 ```
+
+### Stacks and Distribution Application Bundles 
+* *Stack* - application made up of multiple services and we deploy these stacks from what we're calling DAB files, distributed application bundles. 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/getting_started_with_docker/images/img14.JPG)  
+
+* we have to push our images on docker hub and store their names in docker-compose.yml file with *image:* name 
+* then we're creating bundle ``` docker-compose bundle ```
+* stack creation: ``` docker stack deploy voteapp ```
+* get list of the docker stack tasks: ``` docker stack tasks voteapp```
+* to inspect your service ``` docker service inspect voteapp_vote
+* clear everything from stack: ``` docker stack rm voteapp```
+
+### Recap 
+``` docker swarm init ``` - initiate docker swarm 
+``` docker swarm join ``` - join swarm from other nodes 
+``` docker service create ``` - create a service inside a swarm
+``` docker service scale ``` - change how many services need to run 
+``` docker service update ``` - make an update of your running service
+``` docker stack deploy ``` - deploy stack with combined services in your swarm 
