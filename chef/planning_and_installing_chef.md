@@ -18,19 +18,45 @@ package "httpd" do
     action :install
 end
 ```
-from code we can understand that what we need and what action should be permorfed
+
+* From code we can understand that what we need and what action should be permorfed
+
 ![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img1.JPG)
 
+* Difference between ** Hosted Chef ** and ** Chef Server **
 
+![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img2.JPG)
 
+### Sign up for Hosted Chef
+Best option is visit - https://learn.chef.io/modules/try-chef#/
 
+Get environment in Docker and playaround. 
 
+*  First, the command is chef-run. This is a utility to run adhoc Chef commands on a remote server. It provides a good way to get started with Chef, without requiring any infrastructure beyond SSH.
 
+* Next is the host name of the machine we are going to be configuring--web1.
 
+* Finally we have file hello.txt. This refers to the Chef file resource and passes it the name hello.txt. This has the effect of creating a file called hello.txt on the machine. We don't need to provide any credentials because we have provisioned these test machines with SSH keys.
 
+* Recipes:
+  * If you want to configure more than a single item on your system, you will need to collect your resources together in a recipe. With a recipe, Chef will process the resources in the order they appear.
+  * We have included a basic recipe for you to try. It will install a utility, FIGlet, and use it to create a file with a hello world message. Let's take a look at the file and talk through it.
 
+  ```
 
+cat recipe.rb
+apt_update
+ 
+package 'figlet'
+ 
+directory '/tmp'
+ 
+execute 'write_hello_world' do
+    command 'figlet Hello World! > /tmp/hello.txt'
+    not_if { File.exist?('/tmp/hello.txt') }
+end
 
+  ```
 
 
 ## Installing Chef 
