@@ -95,16 +95,22 @@ end
 
 ![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img4.JPG)
 
-
-
-
-
-
-
-
-
 ## Installing Chef 
- 
+### Module Overview 
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img5.JPG)
+
+### Demo: Deploy Base Environment in Azure with PowerShell
+
+* Step 1. 
+```powershell
+
+Add-AzureAccount  #add your account
+Get-AzureSubscription # check subscription status
+
+```
+
+
  ## Configuring the Chef Workstation
 
  ## Bootstrapping Chef Nodes
