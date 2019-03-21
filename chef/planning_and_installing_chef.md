@@ -98,7 +98,7 @@ end
 ## Installing Chef 
 ### Module Overview 
 
-![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img5.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/module2_InstallingChef/chef/images/img5.JPG)
 
 ### Demo: Deploy Base Environment in Azure with PowerShell
 
