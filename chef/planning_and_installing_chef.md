@@ -42,11 +42,13 @@ Get environment in Docker and playaround.
   * If you want to configure more than a single item on your system, you will need to collect your resources together in a recipe. With a recipe, Chef will process the resources in the order they appear.
   * We have included a basic recipe for you to try. It will install a utility, FIGlet, and use it to create a file with a hello world message. Let's take a look at the file and talk through it.
 
-  ```
-
+```
 cat recipe.rb
 apt_update
- 
+```
+
+```ruby
+
 package 'figlet'
  
 directory '/tmp'
@@ -55,8 +57,7 @@ execute 'write_hello_world' do
     command 'figlet Hello World! > /tmp/hello.txt'
     not_if { File.exist?('/tmp/hello.txt') }
 end
-
-  ```
+```
 
 * Cookbook container:
   * The **README.md** file gives description of the cookbook and how it should be used. While not mandatory, it is highly recommended that all cookbooks include a README.
@@ -69,7 +70,6 @@ end
 
 
 ```ruby
-
 #
 # Cookbook:: webserver
 # Recipe:: default
