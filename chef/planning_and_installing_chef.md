@@ -58,6 +58,50 @@ end
 
   ```
 
+* Cookbook container:
+  * The **README.md** file gives description of the cookbook and how it should be used. While not mandatory, it is highly recommended that all cookbooks include a README.
+
+  * The metadata.rb file is required for all cookbooks. It contains the name and version number of the cookbook and information about dependencies. 
+
+  * **recipes** contain the recipes. You may have as many as necessary including the default recipe, **default.rb**, which is the recipe that is run if another is not specified.
+  
+  * **templates** directory contains templates for text files that are required by a recipe, for example for configuration files that need populated with realtime data
+
+
+```ruby
+
+#
+# Cookbook:: webserver
+# Recipe:: default
+#
+# Copyright:: 2018, The Authors, All Rights Reserved.
+apt_update
+ 
+package 'apache2'
+ 
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+end
+ 
+service 'apache2' do
+  action [:enable, :start]
+end
+
+```
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img3.JPG)
+
+###### Chef Server Components
+
+![img](https://github.com/Bes0n/pluralsight/blob/master/chef/images/img4.JPG)
+
+
+
+
+
+
+
+
 
 ## Installing Chef 
  
