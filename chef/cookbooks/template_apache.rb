@@ -1,3 +1,9 @@
+#
+# Cookbook:: learn_chef_apache2
+# Recipe:: default
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+
 apt_update 'Update the apt cache daily' do
   frequency 86_400
   action :periodic
@@ -10,10 +16,6 @@ service 'apache2' do
   action [:enable, :start]
 end
 
-file '/var/www/html/index.html' do
-  content '<html>
-  <body>
-    <h1>Anastasiya loves Sims 4</h1>
-  </body>
-</html>'
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
 end
