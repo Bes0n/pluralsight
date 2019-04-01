@@ -114,3 +114,5 @@ Get-AzureSubscription # check subscription status
  ## Configuring the Chef Workstation
 
  ## Bootstrapping Chef Nodes
+ 
+ Work in Progress
