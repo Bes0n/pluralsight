@@ -7,17 +7,16 @@ Single one - server node, has services - server and agent.
 
 Agents work on builds, when one node is not enough - you can set up agent nodes and send builds there. 
 
-![server_agent](https://github.com/Bes0n/TeamCity/blob/master/images/Annotation%202019-02-22%20114307.jpg)
-
+![server_agent](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/Annotation%202019-02-22%20114307.jpg)
 ### Setting up TeamCity : Windows Installation
 Go to website and download .exe file 
 
 Will start as a services after reboot: 
 
-![installation](https://github.com/Bes0n/TeamCity/blob/master/images/Annotation%202019-02-22%20115118.jpg)
+![installation](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/Annotation%202019-02-22%20115118.jpg)
 
 If you set up agent on different machine - enter servername instead of localhost. 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/Annotation%202019-02-22%20115653.jpg)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/Annotation%202019-02-22%20115653.jpg)
 
 * For services running use user account, helps to avoid debugging problems. 
 
@@ -68,7 +67,7 @@ docker run -it --name teamcity-server-instance  \
 
 ## Creating Application Builds
 ### Anatomy of a Build
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/Annotation%202019-02-22%20144704.jpg)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/Annotation%202019-02-22%20144704.jpg)
 
 ### Cloning the Sample Project
 * For example we will take this repo - https://github.com/g0t4/teamcity-course-spring-petclinic
@@ -116,20 +115,20 @@ docker run -it --name teamcity-server-instance  \
     * for public repository username and password is not required. 
   * set project name and build configuration name 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/repo_automate.jpg)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/repo_automate.jpg)
 
 * For build steps you can see Auto-build steps. Your VSC automatically scanned  
   * command line build 
   * maven build
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img1.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img1.JPG)
 
 * On Build Step: Maven you can see your steps. For this moment we have goals - Clean Test
   * Here we can change steps from *clean* to *compile* like in command line. 
 
 ### Detecting Build Tools
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img2.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img2.JPG)
 
 * after JDK installation to be abe to see JDK in team city build window we need to restart team city build agent - TCBuildAgent 
 * Goals field required for defining what command to run on Maven. We changed it to *compile*
@@ -138,7 +137,7 @@ docker run -it --name teamcity-server-instance  \
 
 ### Running a Build
 * To start our process we can use *run* button. 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img3.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img3.JPG)
 
 * after clicking run you can see update on a *build queue* that one item is added 
 * then on agent tab color will change, that agent is busy right now. 
@@ -153,20 +152,20 @@ docker run -it --name teamcity-server-instance  \
   * Updating sources
   * Maven step (which is orange) with time indicated
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img4.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img4.JPG)
 
 ### The Checkout Directory
 * If we will go to the agent where build agent installed and check our Checkout directory - *C:\TeamCity\buildAgent\work\...* we can see there our repository/ 
 * if we will run build again - nothing will happen, because files are cached. So in this case sometimes it happens that build can fail and it's difficult to find what causes that. Let's discuss *cleaning* process on next topic. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img5.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img5.JPG)
 
 ### Cleaning Between Builds
 
 * if incremental build is not enough for us, we can go to Build Steps and to the goals *clean compile* attribute. 
 * if we will run build in this case we can see that folders are recreating inside work folder. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img6.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img6.JPG)
 
 ### Capturing Packages as Artifacts
 
@@ -177,7 +176,7 @@ docker run -it --name teamcity-server-instance  \
 * when you run build, tests start passing, because TeamCity smart and knows that in packaging procedure test must be passed. 
 * you can take artifacts and push them to somewhere else. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img7.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img7.JPG)
 
 ### Quizzery
 * When you have error in your build, you can investigate it from *Build Log* 
@@ -189,7 +188,7 @@ docker run -it --name teamcity-server-instance  \
   * Build Result 
   * Output of a Build 
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img8.JPG)  
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img8.JPG)  
 
 ## Automating Builds for Fast Feedback
 ### .NET Library Build Steps
@@ -203,17 +202,17 @@ docker run -it --name teamcity-server-instance  \
 As example we will use this project: 
 https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img9.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img9.JPG)
 
 ### Restoring NuGet Dependencies
 * first step we need NuGet Restore 
 * same steps for creating project on Java. Go to <Root project>
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img10.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img10.JPG)
 
 * there is a variaties of build steps in runner type field. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img11.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img11.JPG)
 
 * first of all go to Administration > Tools > Install tool and select NuGet 
   * select NuGet version 
@@ -222,60 +221,60 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
   
 * after running build you can see NuGet Packages
 * dependencies restored and next step is running MS Build  
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img12.JPG)  
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img12.JPG)  
 
 ### Adding a Second Build Step for MSBuild
 * go to *Edit configuration settings* and add Visual Studio as 2nd Build step
 * don't mess with steps, first you have to restore dependencies, otherwise build will fail 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img13.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img13.JPG)
 
 * when you click run - No compatible agents error appears. 
 * there is no MSBuildTool installed on the agent 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img14.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img14.JPG)
 
 * go and install required tools and restart agent
 * msbuild will run immediately
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img15.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img15.JPG)
 
 ### Running Unit Tests with NUnit
 * for unit test we're going to add Build Step *NUnit*
 * select path for run tests from 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img16.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img16.JPG)
 
 
 ### Rich Test Reporting
 * after Unit Test we can check results in Tests tab 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img17.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img17.JPG)
 
 ### Automated Code Coverage Reports
 
 * enable Code Coverage in Buld Steps of NUnit testing by selecting JetBrains dotCover 
 * after Unit Test end you can see code coverage output 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img18.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img18.JPG)
 
 * so you can also access code coverage tab directly and take a look at any parts of your code 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img19.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img19.JPG)
 
 ### Triggering Builds on Code Changes
 * let's consider Triggers in Build Configuration Settings 
 * VCS root trigger could find any changes in your git repo and fetch them in GUI
 * VCS understands when you make changes in your repo and automatically triggers. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img20.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img20.JPG)
 
 * take a look on VCS root name and Fetch URL this is where changes are triggered. You have to fork repo if you took it from other person, otherwise you couldn't push the changes to repo. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img21.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img21.JPG)
 
 ### Notifications
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img22.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img22.JPG)
 * Notifications set up by user. Click on your *user* tab and check *Notification Rules*
 * There are 4 types of notifications 
   * Email
@@ -283,7 +282,7 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
   * Jabber
   * Windows Tray 
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img23.JPG)  
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img23.JPG)  
 
 ### Email Notifications
 * Let's configure email notifications. Go to *Administration* > *Email Notifier*
@@ -300,25 +299,25 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 
 * Set up mail notifications and send test. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img24.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img24.JPG)
 
 * after setting up your notification rules you should get notification message about successful build or failed, depends how did you configured your notification rules. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img25.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img25.JPG)
 
 ### GitHub Integration
 * One of the important Build Features is Commit Status publisher. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img26.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img26.JPG)
 
 * We can add issue tracking for Project itself. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img27.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img27.JPG)
 
 * Or you can go to Connections tab and establish connection with cloud solution 
   * this one simplifies your repository adding, tracking issues and commits 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img28.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img28.JPG)
 
 ### Quizzery 
 
@@ -334,7 +333,7 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
   * after integration and fast test, someone review it and press push button 
   * deploy to staging with deploy and smoke test 
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img29.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img29.JPG)
 
 ### Manually Adding a Build Configuration
 * Manually create project and manually create build
@@ -344,17 +343,17 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
   * add VCS root name and Fetch URL 
   * you also can change authentication method from anonymous to password 
   
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img30.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img30.JPG)
 
 ### Build Scripts with the Command Line Build Step
 * Let's use *command line* as a build step, we have to add it manually. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img31.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img31.JPG)
 
 ###  Using NPM in TeamCity
 * we're going to have problems, because there is no nodejs and npm on our build. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img32.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img32.JPG)
 
 * we have to install nodejs and npm. For linux
   * *apt install nodejs* *apt install npm*
@@ -373,37 +372,37 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 ### Build Configuration Templates
 * from previous lessons we did testing for PhantomJS browser, now we want to test it on Chrome and Firefox browsers. We will use templates for this purpose 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img33.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img33.JPG)
 
 ### Extracting a Build Configuration Template
 * it's possible to extract template from build configuration 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img34.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img34.JPG)
 
 * after template creation you can see that build configuration is built on template
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img35.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img35.JPG)
 
 ### Parameterizing a Template
 * for parametize template - go to build steps in template and add required parameters. In build steps 2 we will change *phantomjs* to *%Browser%* value
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img36.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img36.JPG)
 
 * to define parameter for our step - we have to go to *Parameters* menu. 
 * better to keep value empty, so it will be mandatory to enter for any step inside build 
 * build will not run until we define required parameter. So we have to go inside build setting check parameter and write down in our case "PhantomJS" value
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img37.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img37.JPG)
 
 ### Creating Builds Based on a Template
 * Now we're going to create different build configuration for rest browsers. 
 * Best way to create another builds click on *Project* and *Edit project settings*
 * Here we can manage our Build configurations and Templates 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img38.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img38.JPG)
 
 * Here we're creating Build Configuration by defining name, choose template and define required parameters in our case it's Browser 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img39.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img39.JPG)
 
 * Install required browsers and create from template configuration builds
   * Chrome
@@ -413,39 +412,39 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 * Let's create new Build Configuration *Deploy To Staging*
 * To establish connection between build configurations and build pipeline - we have to go in *Dependencies* menu. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img40.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img40.JPG)
 
 * We add PhantomJS or Fast Tests in build chain 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img41.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img41.JPG)
 
 * for * Deploy to staging * we will choose Chrome and Firefox build configurations. Step 01 already used in our build chain. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img42.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img42.JPG)
 
 * Below you can see *Deployment Pipeline* diagram 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img43.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img43.JPG)
 
 ### Manually Running a Build Chain
 * After running our step 3. *Deploy to Staging* we can see entire picture of our build chain 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img44.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img44.JPG)
 
 * take as a note and look at these number, when your build is successfull tests will not run again, so you will not loose any time for testing again. 
 * the only number is changes on *Deploy to staging* step. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img45.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img45.JPG)
 
 ## Deploying Software with the Build Chain DSL
 ### TeamCity XML Configuration
 * all build configurations stored in .xml file. Stored on TeamCity server
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img47.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img47.JPG)
 
 * directory where .xml files stored - *\TeamCity\config\projects* 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img46.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img46.JPG)
 
 ### Setting up Versioned Settings with Kotlin
 * Let's create git hub repo 
@@ -453,11 +452,11 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 * go to project settings, in our case JavaScript project
 * Select *Versioned Settings* and check *Synchronization enabled* with indicating repo we just created. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img48.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img48.JPG)
 
 * after connecting your VCS to Kotlin you can see .kt file on your repo - which is Kotlin language based on Java 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img49.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img49.JPG)
 
 ### Changing Settings Through VCS
 * clone repo *https://github.com/Bes0n/javascript-settings.git*
@@ -465,7 +464,7 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 * You can see that message on *Versioned Settings* - * Project settings are stored in Kotlin DSL, consider changing the settings in the Kotlin scripts instead of user interface *
 * when we make any change in our setting through IDE and push them from git, so our project automaticall will apply these changes. 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img50.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img50.JPG)
 
 * after making required changes you can push it to Git, VCS will catch your changes and apply them. 
 
@@ -545,5 +544,5 @@ object id03Firefox : BuildType({
 
 * As the result we deployed our project on IIS 
 
-![img](https://github.com/Bes0n/TeamCity/blob/master/images/img51.JPG)
+![img](https://github.com/Bes0n/pluralsight/blob/master/teamcity/images/img51.JPG)
 
