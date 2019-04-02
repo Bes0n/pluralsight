@@ -261,4 +261,289 @@ https://github.com/g0t4/teamcity-course-aspnet-identity-mongo
 
 * so you can also access code coverage tab directly and take a look at any parts of your code 
 
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img19.JPG)
+
 ### Triggering Builds on Code Changes
+* let's consider Triggers in Build Configuration Settings 
+* VCS root trigger could find any changes in your git repo and fetch them in GUI
+* VCS understands when you make changes in your repo and automatically triggers. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img20.JPG)
+
+* take a look on VCS root name and Fetch URL this is where changes are triggered. You have to fork repo if you took it from other person, otherwise you couldn't push the changes to repo. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img21.JPG)
+
+### Notifications
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img22.JPG)
+* Notifications set up by user. Click on your *user* tab and check *Notification Rules*
+* There are 4 types of notifications 
+  * Email
+  * IDE
+  * Jabber
+  * Windows Tray 
+  
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img23.JPG)  
+
+### Email Notifications
+* Let's configure email notifications. Go to *Administration* > *Email Notifier*
+* Install Mailhog for testing email notifications. Find .yml config below
+
+``` 
+    mailhog:
+        image: mailhog/mailhog
+        restart: unless-stopped
+        ports:
+            - 1025:1025
+            - 8025:8025
+```
+
+* Set up mail notifications and send test. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img24.JPG)
+
+* after setting up your notification rules you should get notification message about successful build or failed, depends how did you configured your notification rules. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img25.JPG)
+
+### GitHub Integration
+* One of the important Build Features is Commit Status publisher. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img26.JPG)
+
+* We can add issue tracking for Project itself. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img27.JPG)
+
+* Or you can go to Connections tab and establish connection with cloud solution 
+  * this one simplifies your repository adding, tracking issues and commits 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img28.JPG)
+
+### Quizzery 
+
+* while packaging NuGet packages, you can check in Build Steps the following
+  * *Publish created packages to build artifacts* - so artifacts can automatically selected after finish of build. 
+
+## Chaining Builds to Perform Parallel Integration Testing
+### Modeling Deployment Pipelines
+* Let's confider Java Build process
+  * Getting repository from github
+  * performing fast tests with npm install and PhantomJS
+  * performing integration tests for compatibility on browsers 
+  * after integration and fast test, someone review it and press push button 
+  * deploy to staging with deploy and smoke test 
+  
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img29.JPG)
+
+### Manually Adding a Build Configuration
+* Manually create project and manually create build
+* add 01. Fast Tests as first build 
+* add https://github.com/g0t4/teamcity-course-cards as URL to repository 
+* we can choose different Type of VCS. In our case this is Git 
+  * add VCS root name and Fetch URL 
+  * you also can change authentication method from anonymous to password 
+  
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img30.JPG)
+
+### Build Scripts with the Command Line Build Step
+* Let's use *command line* as a build step, we have to add it manually. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img31.JPG)
+
+###  Using NPM in TeamCity
+* we're going to have problems, because there is no nodejs and npm on our build. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img32.JPG)
+
+* we have to install nodejs and npm. For linux
+  * *apt install nodejs* *apt install npm*
+  * after installation you have to restart agent]
+  * now we can run our build. 
+  * for better view - let's split build steps in 2: *npm install* *npm test*
+  
+### Karma Test Results on the Fly via Service Messages
+
+* let's install dependency of teamcity - *karma*   
+``` npm i --save-dev karma-teamcity-reporter ``` - required to pick up test results. 
+* in our build step we have to add ``` --reporters teamcity ``` 
+* for taking changes automatically we have to add VCS triggers
+* with Karma reporter we can see partial test results on build overview 
+
+### Build Configuration Templates
+* from previous lessons we did testing for PhantomJS browser, now we want to test it on Chrome and Firefox browsers. We will use templates for this purpose 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img33.JPG)
+
+### Extracting a Build Configuration Template
+* it's possible to extract template from build configuration 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img34.JPG)
+
+* after template creation you can see that build configuration is built on template
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img35.JPG)
+
+### Parameterizing a Template
+* for parametize template - go to build steps in template and add required parameters. In build steps 2 we will change *phantomjs* to *%Browser%* value
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img36.JPG)
+
+* to define parameter for our step - we have to go to *Parameters* menu. 
+* better to keep value empty, so it will be mandatory to enter for any step inside build 
+* build will not run until we define required parameter. So we have to go inside build setting check parameter and write down in our case "PhantomJS" value
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img37.JPG)
+
+### Creating Builds Based on a Template
+* Now we're going to create different build configuration for rest browsers. 
+* Best way to create another builds click on *Project* and *Edit project settings*
+* Here we can manage our Build configurations and Templates 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img38.JPG)
+
+* Here we're creating Build Configuration by defining name, choose template and define required parameters in our case it's Browser 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img39.JPG)
+
+* Install required browsers and create from template configuration builds
+  * Chrome
+  * Firefox
+  
+### Dependencies
+* Let's create new Build Configuration *Deploy To Staging*
+* To establish connection between build configurations and build pipeline - we have to go in *Dependencies* menu. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img40.JPG)
+
+* We add PhantomJS or Fast Tests in build chain 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img41.JPG)
+
+* for * Deploy to staging * we will choose Chrome and Firefox build configurations. Step 01 already used in our build chain. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img42.JPG)
+
+* Below you can see *Deployment Pipeline* diagram 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img43.JPG)
+
+### Manually Running a Build Chain
+* After running our step 3. *Deploy to Staging* we can see entire picture of our build chain 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img44.JPG)
+
+* take as a note and look at these number, when your build is successfull tests will not run again, so you will not loose any time for testing again. 
+* the only number is changes on *Deploy to staging* step. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img45.JPG)
+
+## Deploying Software with the Build Chain DSL
+### TeamCity XML Configuration
+* all build configurations stored in .xml file. Stored on TeamCity server
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img47.JPG)
+
+* directory where .xml files stored - *\TeamCity\config\projects* 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img46.JPG)
+
+### Setting up Versioned Settings with Kotlin
+* Let's create git hub repo 
+* add it in VCS root directory
+* go to project settings, in our case JavaScript project
+* Select *Versioned Settings* and check *Synchronization enabled* with indicating repo we just created. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img48.JPG)
+
+* after connecting your VCS to Kotlin you can see .kt file on your repo - which is Kotlin language based on Java 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img49.JPG)
+
+### Changing Settings Through VCS
+* clone repo *https://github.com/Bes0n/javascript-settings.git*
+* Install IntelliJ
+* You can see that message on *Versioned Settings* - * Project settings are stored in Kotlin DSL, consider changing the settings in the Kotlin scripts instead of user interface *
+* when we make any change in our setting through IDE and push them from git, so our project automaticall will apply these changes. 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img50.JPG)
+
+* after making required changes you can push it to Git, VCS will catch your changes and apply them. 
+
+* Here I've added new browsers through *settings.kts*
+
+```
+
+project {
+
+    vcsRoot(HttpsGithubComBes0nTeamcityCourseCardsGit)
+
+    buildType(id01FastTests)
+    buildType(id02Chrome)
+    buildType(id03Firefox)
+    buildType(id04DeployToStaging)
+
+    template(Template_1)
+}
+
+
+object id02Chrome : BuildType({
+    templates(Template_1)
+    id("02Chrome")
+    name = "02. Chrome"
+
+    params {
+        param("Browser", "Chrome")
+    }
+
+    dependencies {
+        snapshot(id01FastTests) {
+        }
+    }
+})
+
+object id03Firefox : BuildType({
+    templates(Template_1)
+    id("03Firefox")
+    name = "03. Firefox"
+
+    params {
+        param("Browser", "Firefox")
+    }
+
+    dependencies {
+        snapshot(id01FastTests) {
+        }
+    }
+})
+
+```
+
+### Modifying the Deployment Pipeline Through VCS
+
+* We can make changes - like adding build configurations, build chains etc 
+* We can reuse previous scripts to add new tests. 
+
+### Triggering Build Chains
+* We've added ne configuration build, but we don't have IE launcher. To install it * npm install karma-ie-launcher --save-dev *
+
+* when you add Kotlin Versioned setting - VCS trigger automatically set to the last step of Build Chain 
+
+### Automating Deployments
+* TIme to deploy our project on IIS, we've added some script in Deploy to Staging build. 
+
+```
+    steps {
+        script {
+            name = "IIS Deploy"
+            id = "RUNNER_6"
+            scriptContent = """
+                rmdir /S /Q \inetpub\wwwroot
+                xcopy /S /I /Y app \inetpub\wwwroot
+            """.trimIndent()
+        }
+```
+
+* As the result we deployed our project on IIS 
+
+![img](https://github.com/Bes0n/TeamCity/blob/master/images/img51.JPG)
+
