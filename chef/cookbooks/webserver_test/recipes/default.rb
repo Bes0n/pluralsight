@@ -4,11 +4,18 @@
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
-package 'httpd' do
-    action :install
-end
+package_name =
+  service_name =
+    case node['platform']
+    when 'centos' then 'httpd'
+    when 'ubuntu' then 'apache2'
+    end
 
-service 'httpd' do
+# Install the package.
+package package_name
+
+# Start and enable the service.
+service service_name do
   action [:enable, :start]
 end
 
