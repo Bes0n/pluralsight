@@ -210,9 +210,9 @@ docker service create --name psight2 --network ps-net -p 80:80 --replicas 12 nig
 * clear everything from stack: ``` docker stack rm voteapp```
 
 ### Recap 
-``` docker swarm init ``` - initiate docker swarm 
-``` docker swarm join ``` - join swarm from other nodes 
-``` docker service create ``` - create a service inside a swarm
-``` docker service scale ``` - change how many services need to run 
-``` docker service update ``` - make an update of your running service
-``` docker stack deploy ``` - deploy stack with combined services in your swarm 
+* ``` docker swarm init ``` - initiate docker swarm 
+* ``` docker swarm join ``` - join swarm from other nodes 
+* ``` docker service create ``` - create a service inside a swarm
+* ``` docker service scale ``` - change how many services need to run 
+* ``` docker service update ``` - make an update of your running service
+* ``` docker stack deploy ``` - deploy stack with combined services in your swarm 
